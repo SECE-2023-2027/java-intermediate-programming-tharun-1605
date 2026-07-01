@@ -6,15 +6,13 @@ class Product {
     private double price;
     private int stockQuantity;
 
-    // Parameterized Constructor
     public Product(String productId, String productName, double price, int stockQuantity) {
         this.productId = productId;
         this.productName = productName;
-        setPrice(price);              // using setter for validation
+        setPrice(price);              
         setStockQuantity(stockQuantity);
     }
 
-    // Getters
     public String getProductId() {
         return productId;
     }
@@ -31,7 +29,6 @@ class Product {
         return stockQuantity;
     }
 
-    // Setters with validation
     public void setPrice(double price) {
         if (price < 0) {
             this.price = 0.0;
@@ -56,7 +53,6 @@ class Product {
         this.productName = productName;
     }
 
-    // Method to apply discount
     public void applyDiscount(double percentage) {
         if (percentage > 0 && percentage <= 100) {
             price = price - (price * percentage / 100);
@@ -68,7 +64,6 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        // Taking input from user
         System.out.print("Enter Product ID: ");
         String id = sc.nextLine();
 
@@ -81,16 +76,13 @@ public class Main {
         System.out.print("Enter Stock Quantity: ");
         int stock = sc.nextInt();
 
-        // Creating Product object
         Product p = new Product(id, name, price, stock);
 
-        // Discount input
         System.out.print("Enter Discount Percentage: ");
         double discount = sc.nextDouble();
 
         p.applyDiscount(discount);
 
-        // Output
         System.out.println("\nFinal Price: " + p.getPrice());
         System.out.println("Stock Quantity: " + p.getStockQuantity());
 
